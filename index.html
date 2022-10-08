@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    .playground{
+        height: 550px;
+
+        width: 550px;
+        background-color: green;
+    }
+    .img1{
+        position: relative;
+        height: 60px;
+    
+    }
+</style>
+  
+    
+</head>
+<body>
+    <h1>Grab Faster</h1>
+ 
+   <div class="playground">
+
+    <img src="./image/dancer_PNG106.png" class="img1" id="img" onclick="hitMan()">
+
+   </div>
+
+    <div class="controls">
+        <h2 id="gameStatus">GameStatus</h2>
+     <h3>
+        <span>
+            Total
+        </span>
+        <span id="totalhit">
+            
+        </span>
+     </h3>
+     <button  onclick="startGame()">Start Game</button>
+    </div>
+
+<script>
+
+    let hitCount =0;
+    let isGameStarted =false;
+    function startGame(){
+
+        document.getElementById('gameStatus').innerText="Game Started"
+        
+         hitCount =0;
+        isGameStarted=true;
+    console.log('button called!')
+    let image = document.getElementById('img')
+    let time = setInterval(()=>{
+        var i = Math.floor(Math.random()*500)+1;
+        var j = Math.floor(Math.random()*500)+1;
+
+        image.style.left=i+"px"
+        image.style.top=j+"px"
+
+    },2000)
+
+    setTimeout(()=>{
+
+        clearTimeout(time);
+
+        isGameStarted =false;
+
+        document.getElementById('gameStatus').innerText="Game Over"
+
+
+    },20000)       
+ }
+
+ function hitMan(){
+    if(isGameStarted){
+
+
+        hitCount++;
+    
+        document.getElementById('totalhit').innerText=hitCount
+       
+    }
+
+
+ }
+
+</script>
+    
+</body>
+</html>
